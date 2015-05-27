@@ -1,0 +1,393 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>chapter0 Page1</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(8,1,935,1210,0,heights,'.jpg');
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">Actual Size</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+		<option value="5">Automatic</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load1();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+        if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+        isDone[i] = false;
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_1{left:247px;top:144px;}
+#t2_1{left:300px;top:260px;}
+#t3_1{left:148px;top:372px;}
+#t4_1{left:231px;top:372px;}
+#t5_1{left:148px;top:457px;}
+#t6_1{left:231px;top:457px;}
+#t7_1{left:148px;top:541px;}
+#t8_1{left:231px;top:541px;}
+#t9_1{left:148px;top:625px;}
+#ta_1{left:231px;top:625px;}
+#tb_1{left:148px;top:710px;}
+#tc_1{left:231px;top:710px;}
+#td_1{left:148px;top:794px;}
+#te_1{left:231px;top:794px;}
+#tf_1{left:148px;top:878px;}
+#tg_1{left:231px;top:878px;}
+#th_1{left:110px;top:1134px;}
+#form1_1{	border-style:none;	z-index:2;	position: absolute;	left:628px;	top:460px;	width:11px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_2{	border-style:none;	z-index:2;	position: absolute;	left:408px;	top:544px;	width:11px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_3{	border-style:none;	z-index:2;	position: absolute;	left:408px;	top:628px;	width:11px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_4{	border-style:none;	z-index:2;	position: absolute;	left:365px;	top:796px;	width:11px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_5{	border-style:none;	z-index:2;	position: absolute;	left:426px;	top:712px;	width:11px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_6{	border-style:none;	z-index:2;	position: absolute;	left:295px;	top:460px;	width:12px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_7{	border-style:none;	z-index:2;	position: absolute;	left:385px;	top:882px;	width:12px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_8{	border-style:none;	z-index:2;	position: absolute;	left:319px;	top:882px;	width:12px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_9{	border-style:none;	z-index:2;	position: absolute;	left:509px;	top:882px;	width:12px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_10{	border-style:none;	z-index:2;	position: absolute;	left:452px;	top:460px;	width:12px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_11{	border-style:none;	z-index:2;	position: absolute;	left:582px;	top:460px;	width:12px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_12{	border-style:none;	z-index:2;	position: absolute;	left:472px;	top:628px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_13{	border-style:none;	z-index:2;	position: absolute;	left:393px;	top:374px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_14{	border-style:none;	z-index:2;	position: absolute;	left:471px;	top:712px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_15{	border-style:none;	z-index:2;	position: absolute;	left:307px;	top:628px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_16{	border-style:none;	z-index:2;	position: absolute;	left:307px;	top:544px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_17{	border-style:none;	z-index:2;	position: absolute;	left:319px;	top:374px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_18{	border-style:none;	z-index:2;	position: absolute;	left:362px;	top:374px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_19{	border-style:none;	z-index:2;	position: absolute;	left:526px;	top:628px;	width:12px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_20{	border-style:none;	z-index:2;	position: absolute;	left:373px;	top:374px;	width:22px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_21{	border-style:none;	z-index:2;	position: absolute;	left:330px;	top:374px;	width:34px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_22{	border-style:none;	z-index:2;	position: absolute;	left:593px;	top:460px;	width:37px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_23{	border-style:none;	z-index:2;	position: absolute;	left:436px;	top:712px;	width:37px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_24{	border-style:none;	z-index:2;	position: absolute;	left:483px;	top:628px;	width:44px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_25{	border-style:none;	z-index:2;	position: absolute;	left:330px;	top:882px;	width:57px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_26{	border-style:none;	z-index:2;	position: absolute;	left:417px;	top:628px;	width:57px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_27{	border-style:none;	z-index:2;	position: absolute;	left:231px;	top:460px;	width:66px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_28{	border-style:none;	z-index:2;	position: absolute;	left:231px;	top:628px;	width:78px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_29{	border-style:none;	z-index:2;	position: absolute;	left:231px;	top:544px;	width:78px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_30{	border-style:none;	z-index:2;	position: absolute;	left:231px;	top:882px;	width:90px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_31{	border-style:none;	z-index:2;	position: absolute;	left:417px;	top:544px;	width:87px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_32{	border-style:none;	z-index:2;	position: absolute;	left:637px;	top:460px;	width:92px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_33{	border-style:none;	z-index:2;	position: absolute;	left:231px;	top:374px;	width:90px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_34{	border-style:none;	z-index:2;	position: absolute;	left:481px;	top:712px;	width:90px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_35{	border-style:none;	z-index:2;	position: absolute;	left:318px;	top:628px;	width:92px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_36{	border-style:none;	z-index:2;	position: absolute;	left:318px;	top:544px;	width:92px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_37{	border-style:none;	z-index:2;	position: absolute;	left:520px;	top:882px;	width:104px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_38{	border-style:none;	z-index:2;	position: absolute;	left:396px;	top:882px;	width:115px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_39{	border-style:none;	z-index:2;	position: absolute;	left:463px;	top:460px;	width:121px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_40{	border-style:none;	z-index:2;	position: absolute;	left:536px;	top:628px;	width:136px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_41{	border-style:none;	z-index:2;	position: absolute;	left:231px;	top:796px;	width:136px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_42{	border-style:none;	z-index:2;	position: absolute;	left:404px;	top:374px;	width:142px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_43{	border-style:none;	z-index:2;	position: absolute;	left:306px;	top:460px;	width:148px;	height:41px;	text-align:left;	background: transparent;	font:normal 32px Arial, Helvetica, sans-serif;}
+#form1_44{	border-style:none;	z-index:2;	position: absolute;	left:374px;	top:796px;	width:179px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#form1_45{	border-style:none;	z-index:2;	position: absolute;	left:231px;	top:712px;	width:197px;	height:43px;	text-align:left;	background: transparent;	font:normal 33px Arial, Helvetica, sans-serif;}
+#ti_1{left:807px;top:1126px;}
+
+.s5_1{
+	FONT-SIZE: 55px;
+	FONT-FAMILY: YJCIFL-ArialMT1;
+	color: rgb(153,153,153);
+}
+
+.s2_1{
+	FONT-SIZE: 97px;
+	FONT-FAMILY: CNBTAQ-Georgia-Italic1;
+	color: rgb(102,102,102);
+}
+
+.s1_1{
+	FONT-SIZE: 293px;
+	FONT-FAMILY: YJCIFL-ArialMT1;
+	color: rgb(224,102,102);
+}
+
+.s3_1{
+	FONT-SIZE: 146px;
+	FONT-FAMILY: BPHPYA-Arial-BoldMT1;
+	color: rgb(67,67,67);
+}
+
+.s6_1{
+	FONT-SIZE: 85px;
+	FONT-FAMILY: YJCIFL-ArialMT1;
+	color: rgb(153,153,153);
+}
+
+.s4_1{
+	FONT-SIZE: 146px;
+	FONT-FAMILY: BPHPYA-Arial-BoldMT1;
+	color: rgb(17,85,204);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: BPHPYA-Arial-BoldMT1;
+	src :url("index/fonts/BPHPYA-Arial-BoldMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: CNBTAQ-Georgia-Italic1;
+	src :url("index/fonts/CNBTAQ-Georgia-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: YJCIFL-ArialMT1;
+	src :url("index/fonts/YJCIFL-ArialMT.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_1" class="t s1_1">ETFs Tutorial</div>
+<div id="t2_1" class="t s2_1">Lesson 1: Introduction to ETFs</div>
+<div id="t3_1" class="t s3_1">1.</div>
+<div id="t4_1" class="t s4_1">ETFs in a nutshell</div>
+<div id="t5_1" class="t s3_1">2.</div>
+<div id="t6_1" class="t s4_1">The different flavors of ETFs</div>
+<div id="t7_1" class="t s3_1">3.</div>
+<div id="t8_1" class="t s4_1">How ETFs work</div>
+<div id="t9_1" class="t s3_1">4.</div>
+<div id="ta_1" class="t s4_1">Why ETFs are so popular</div>
+<div id="tb_1" class="t s3_1">5.</div>
+<div id="tc_1" class="t s4_1">Limitations of ETFs</div>
+<div id="td_1" class="t s3_1">6.</div>
+<div id="te_1" class="t s4_1">Trading Strategies</div>
+<div id="tf_1" class="t s3_1">7.</div>
+<div id="tg_1" class="t s4_1">What the Future Holds</div>
+<div id="th_1" class="t s5_1">Copyright © MatchToQuality 2013</div>
+<div id="ti_1" class="t s6_1">1</div>
+
+<!-- End text definitions -->
+
+
+<!-- Begin Form Data -->
+<form>
+<input type="button"  tabindex="15"  id="form1_1" name="30 0 R"  pdfFieldName="30 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="20"  id="form1_2" name="35 0 R"  pdfFieldName="35 0 R" onclick="IDRViewer.goToPage(5);" style="cursor:pointer;"  title="Page 5"/>
+<input type="button"  tabindex="25"  id="form1_3" name="40 0 R"  pdfFieldName="40 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="37"  id="form1_4" name="52 0 R"  pdfFieldName="52 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="32"  id="form1_5" name="47 0 R"  pdfFieldName="47 0 R" onclick="IDRViewer.goToPage(7);" style="cursor:pointer;"  title="Page 7"/>
+<input type="button"  tabindex="9"  id="form1_6" name="24 0 R"  pdfFieldName="24 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="42"  id="form1_7" name="57 0 R"  pdfFieldName="57 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="40"  id="form1_8" name="55 0 R"  pdfFieldName="55 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="44"  id="form1_9" name="59 0 R"  pdfFieldName="59 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="11"  id="form1_10" name="26 0 R"  pdfFieldName="26 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="13"  id="form1_11" name="28 0 R"  pdfFieldName="28 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="27"  id="form1_12" name="42 0 R"  pdfFieldName="42 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="6"  id="form1_13" name="21 0 R"  pdfFieldName="21 0 R" onclick="IDRViewer.goToPage(2);" style="cursor:pointer;"  title="Page 2"/>
+<input type="button"  tabindex="34"  id="form1_14" name="49 0 R"  pdfFieldName="49 0 R" onclick="IDRViewer.goToPage(7);" style="cursor:pointer;"  title="Page 7"/>
+<input type="button"  tabindex="23"  id="form1_15" name="38 0 R"  pdfFieldName="38 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="18"  id="form1_16" name="33 0 R"  pdfFieldName="33 0 R" onclick="IDRViewer.goToPage(5);" style="cursor:pointer;"  title="Page 5"/>
+<input type="button"  tabindex="2"  id="form1_17" name="17 0 R"  pdfFieldName="17 0 R" onclick="IDRViewer.goToPage(2);" style="cursor:pointer;"  title="Page 2"/>
+<input type="button"  tabindex="4"  id="form1_18" name="19 0 R"  pdfFieldName="19 0 R" onclick="IDRViewer.goToPage(2);" style="cursor:pointer;"  title="Page 2"/>
+<input type="button"  tabindex="29"  id="form1_19" name="44 0 R"  pdfFieldName="44 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="5"  id="form1_20" name="20 0 R"  pdfFieldName="20 0 R" onclick="IDRViewer.goToPage(2);" style="cursor:pointer;"  title="Page 2"/>
+<input type="button"  tabindex="3"  id="form1_21" name="18 0 R"  pdfFieldName="18 0 R" onclick="IDRViewer.goToPage(2);" style="cursor:pointer;"  title="Page 2"/>
+<input type="button"  tabindex="14"  id="form1_22" name="29 0 R"  pdfFieldName="29 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="33"  id="form1_23" name="48 0 R"  pdfFieldName="48 0 R" onclick="IDRViewer.goToPage(7);" style="cursor:pointer;"  title="Page 7"/>
+<input type="button"  tabindex="28"  id="form1_24" name="43 0 R"  pdfFieldName="43 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="41"  id="form1_25" name="56 0 R"  pdfFieldName="56 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="26"  id="form1_26" name="41 0 R"  pdfFieldName="41 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="8"  id="form1_27" name="23 0 R"  pdfFieldName="23 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="22"  id="form1_28" name="37 0 R"  pdfFieldName="37 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="17"  id="form1_29" name="32 0 R"  pdfFieldName="32 0 R" onclick="IDRViewer.goToPage(5);" style="cursor:pointer;"  title="Page 5"/>
+<input type="button"  tabindex="39"  id="form1_30" name="54 0 R"  pdfFieldName="54 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="21"  id="form1_31" name="36 0 R"  pdfFieldName="36 0 R" onclick="IDRViewer.goToPage(5);" style="cursor:pointer;"  title="Page 5"/>
+<input type="button"  tabindex="16"  id="form1_32" name="31 0 R"  pdfFieldName="31 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="1"  id="form1_33" name="16 0 R"  pdfFieldName="16 0 R" onclick="IDRViewer.goToPage(2);" style="cursor:pointer;"  title="Page 2"/>
+<input type="button"  tabindex="35"  id="form1_34" name="50 0 R"  pdfFieldName="50 0 R" onclick="IDRViewer.goToPage(7);" style="cursor:pointer;"  title="Page 7"/>
+<input type="button"  tabindex="24"  id="form1_35" name="39 0 R"  pdfFieldName="39 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="19"  id="form1_36" name="34 0 R"  pdfFieldName="34 0 R" onclick="IDRViewer.goToPage(5);" style="cursor:pointer;"  title="Page 5"/>
+<input type="button"  tabindex="45"  id="form1_37" name="60 0 R"  pdfFieldName="60 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="43"  id="form1_38" name="58 0 R"  pdfFieldName="58 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="12"  id="form1_39" name="27 0 R"  pdfFieldName="27 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="30"  id="form1_40" name="45 0 R"  pdfFieldName="45 0 R" onclick="IDRViewer.goToPage(6);" style="cursor:pointer;"  title="Page 6"/>
+<input type="button"  tabindex="36"  id="form1_41" name="51 0 R"  pdfFieldName="51 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="7"  id="form1_42" name="22 0 R"  pdfFieldName="22 0 R" onclick="IDRViewer.goToPage(2);" style="cursor:pointer;"  title="Page 2"/>
+<input type="button"  tabindex="10"  id="form1_43" name="25 0 R"  pdfFieldName="25 0 R" onclick="IDRViewer.goToPage(3);" style="cursor:pointer;"  title="Page 3"/>
+<input type="button"  tabindex="38"  id="form1_44" name="53 0 R"  pdfFieldName="53 0 R" onclick="IDRViewer.goToPage(8);" style="cursor:pointer;"  title="Page 8"/>
+<input type="button"  tabindex="31"  id="form1_45" name="46 0 R"  pdfFieldName="46 0 R" onclick="IDRViewer.goToPage(7);" style="cursor:pointer;"  title="Page 7"/>
+
+</form>
+<!-- End Form Data -->
+<!-- Begin page background -->
+<div id="pg1Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg1"><object width="935" height="1210" data="index/1.svg" type="image/svg+xml" id="pdf1" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f1 = [['t1_1',1758],['t2_1',1341],['t4_1',1254],['t6_1',1987],['t8_1',1091],['ta_1',1759],['tc_1',1360],['te_1',1287],['tg_1',1563],['th_1',828]];
+function load1(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f1);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 19;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_1");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

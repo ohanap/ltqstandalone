@@ -1,0 +1,296 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>chapter1 Page4</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200);
+	IDRViewer.makeNavBar(5,4,935,1210,0,heights,'.jpg');
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">Actual Size</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+		<option value="5">Automatic</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load4();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+        if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+        isDone[i] = false;
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_4{left:110px;top:146px;}
+#t2_4{left:110px;top:187px;}
+#t3_4{left:110px;top:228px;}
+#t4_4{left:110px;top:270px;}
+#t5_4{left:110px;top:326px;}
+#t6_4{left:110px;top:367px;}
+#t7_4{left:110px;top:408px;}
+#t8_4{left:110px;top:488px;}
+#t9_4{left:110px;top:542px;}
+#ta_4{left:110px;top:583px;}
+#tb_4{left:110px;top:624px;}
+#tc_4{left:110px;top:666px;}
+#td_4{left:110px;top:707px;}
+#te_4{left:110px;top:748px;}
+#tf_4{left:110px;top:789px;}
+#tg_4{left:110px;top:830px;}
+#th_4{left:110px;top:871px;}
+#ti_4{left:110px;top:928px;}
+#tj_4{left:110px;top:969px;}
+#tk_4{left:110px;top:1010px;}
+#tl_4{left:110px;top:1052px;}
+#tm_4{left:110px;top:1134px;}
+#tn_4{left:807px;top:1126px;}
+
+.s1_4{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: SHCVKO-Cambria4;
+	color: rgb(0,0,0);
+}
+
+.s5_4{
+	FONT-SIZE: 85px;
+	FONT-FAMILY: AMQDJW-ArialMT4;
+	color: rgb(153,153,153);
+}
+
+.s2_4{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: AMQDJW-ArialMT4;
+	color: rgb(183,183,183);
+}
+
+.s3_4{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: SHCVKO-Cambria4;
+	color: rgb(67,67,67);
+}
+
+.s4_4{
+	FONT-SIZE: 55px;
+	FONT-FAMILY: AMQDJW-ArialMT4;
+	color: rgb(153,153,153);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: SHCVKO-Cambria4;
+	src :url("4/fonts/SHCVKO-Cambria.woff") format("woff");
+}
+
+@font-face {
+	font-family: AMQDJW-ArialMT4;
+	src :url("4/fonts/AMQDJW-ArialMT.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_4" class="t s1_4">Tax-loss harvesting also comes with a series of rules.</div>
+<div id="t2_4" class="t s1_4">The “wash sale” rule for instance prevents you from</div>
+<div id="t3_4" class="t s1_4">selling a security at a loss to realize a tax gain and re-</div>
+<div id="t4_4" class="t s1_4">buying a similar security within the same period.</div>
+<div id="t5_4" class="t s1_4">The technicality of the laws surrounding tax-loss</div>
+<div id="t6_4" class="t s1_4">harvesting can be daunting and you should consult a</div>
+<div id="t7_4" class="t s1_4">tax advisor if you are going to follow this strategy.</div>
+<div id="t8_4" class="t s2_4">Getting tactical</div>
+<div id="t9_4" class="t s3_4">Professional investors often overweight or</div>
+<div id="ta_4" class="t s3_4">underweight specific asset types or industry for their</div>
+<div id="tb_4" class="t s3_4">overall asset allocation. In these cases, ETFs can be</div>
+<div id="tc_4" class="t s3_4">a useful tool. They allow taking easy exposure on</div>
+<div id="td_4" class="t s3_4">sectors, styles or industries in a cheap and flexible</div>
+<div id="te_4" class="t s3_4">manner without the inconvenience of paying short</div>
+<div id="tf_4" class="t s3_4">term redemption fees. Still, there is a cost in using</div>
+<div id="tg_4" class="t s3_4">ETFs namely brokerage commissions and bid-ask</div>
+<div id="th_4" class="t s3_4">spreads.</div>
+<div id="ti_4" class="t s1_4">ETFs remain a product of choice to focus on a sector</div>
+<div id="tj_4" class="t s1_4">or a style without losing the benefit of diversification</div>
+<div id="tk_4" class="t s1_4">moreover an ETF can be sold short, a strategy usually</div>
+<div id="tl_4" class="t s1_4">used by experienced investors.</div>
+<div id="tm_4" class="t s4_4">Copyright © MatchToQuality 2013</div>
+<div id="tn_4" class="t s5_4">4</div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg4Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg4"><object width="935" height="1210" data="4/4.svg" type="image/svg+xml" id="pdf4" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f4 = [['t1_4',2741],['t2_4',2692],['t3_4',2752],['t4_4',2541],['t5_4',2532],['t6_4',2727],['t7_4',2594],['t8_4',807],['t9_4',2216],['ta_4',2761],['tb_4',2639],['tc_4',2541],['td_4',2605],['te_4',2630],['tf_4',2591],['tg_4',2574],['ti_4',2707],['tj_4',2775],['tk_4',2779],['tl_4',1604],['tm_4',828]];
+function load4(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f4);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 24;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_4");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

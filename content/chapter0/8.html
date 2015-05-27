@@ -1,0 +1,290 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>chapter0 Page8</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(8,8,935,1210,0,heights,'.jpg');
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">Actual Size</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+		<option value="5">Automatic</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load8();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+        if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+        isDone[i] = false;
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_8{left:110px;top:169px;}
+#t2_8{left:110px;top:217px;}
+#t3_8{left:110px;top:258px;}
+#t4_8{left:110px;top:299px;}
+#t5_8{left:110px;top:340px;}
+#t6_8{left:110px;top:382px;}
+#t7_8{left:110px;top:423px;}
+#t8_8{left:110px;top:464px;}
+#t9_8{left:110px;top:505px;}
+#ta_8{left:110px;top:546px;}
+#tb_8{left:110px;top:588px;}
+#tc_8{left:110px;top:629px;}
+#td_8{left:110px;top:708px;}
+#te_8{left:110px;top:762px;}
+#tf_8{left:110px;top:804px;}
+#tg_8{left:110px;top:845px;}
+#th_8{left:110px;top:886px;}
+#ti_8{left:110px;top:927px;}
+#tj_8{left:110px;top:968px;}
+#tk_8{left:110px;top:1010px;}
+#tl_8{left:110px;top:1051px;}
+#tm_8{left:110px;top:1134px;}
+#tn_8{left:807px;top:1126px;}
+
+.s1_8{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: YJCIFL-ArialMT8;
+	color: rgb(183,183,183);
+}
+
+.s3_8{
+	FONT-SIZE: 55px;
+	FONT-FAMILY: YJCIFL-ArialMT8;
+	color: rgb(153,153,153);
+}
+
+.s4_8{
+	FONT-SIZE: 85px;
+	FONT-FAMILY: YJCIFL-ArialMT8;
+	color: rgb(153,153,153);
+}
+
+.s2_8{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: RMAHTJ-Cambria8;
+	color: rgb(67,67,67);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: YJCIFL-ArialMT8;
+	src :url("8/fonts/YJCIFL-ArialMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: RMAHTJ-Cambria8;
+	src :url("8/fonts/RMAHTJ-Cambria.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_8" class="t s1_8">Trading Strategies</div>
+<div id="t2_8" class="t s2_8">Investor objectives will lead the utilization of ETFs</div>
+<div id="t3_8" class="t s2_8">for gaining exposure to nearly geography, industry</div>
+<div id="t4_8" class="t s2_8">or market. Assets can be invested using equity index</div>
+<div id="t5_8" class="t s2_8">and bond ETFs, and the allocation should be adjusted</div>
+<div id="t6_8" class="t s2_8">in accordance with changes in the investor risk</div>
+<div id="t7_8" class="t s2_8">tolerance and return goals. Alternative assets, such as</div>
+<div id="t8_8" class="t s2_8">commodities, gold or emerging stock markets can also</div>
+<div id="t9_8" class="t s2_8">be used. You can move in and out of markets rather</div>
+<div id="ta_8" class="t s2_8">quickly, for short term gains, much like a hedge fund</div>
+<div id="tb_8" class="t s2_8">strategy. ETFs give the flexibility and diversity to fulfill</div>
+<div id="tc_8" class="t s2_8">the strategy of most investors.</div>
+<div id="td_8" class="t s1_8">What the Future Holds</div>
+<div id="te_8" class="t s2_8">ETFs have been evolving since their inception in the</div>
+<div id="tf_8" class="t s2_8">early 1990s. We continue to witness new type of ETFs</div>
+<div id="tg_8" class="t s2_8">as we go. It is important to note though that ETFs</div>
+<div id="th_8" class="t s2_8">belong to a wide spectrum and two given ETFs can be</div>
+<div id="ti_8" class="t s2_8">quite different. As always investors should analyze</div>
+<div id="tj_8" class="t s2_8">ETFs carefully before investing, taking into account all</div>
+<div id="tk_8" class="t s2_8">factors to ensure that the ETF you choose is the best</div>
+<div id="tl_8" class="t s2_8">way to achieve investment goals.</div>
+<div id="tm_8" class="t s3_8">Copyright © MatchToQuality 2013</div>
+<div id="tn_8" class="t s4_8">8</div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg8Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg8"><object width="935" height="1210" data="8/8.svg" type="image/svg+xml" id="pdf8" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f8 = [['t1_8',997],['t2_8',2630],['t3_8',2637],['t4_8',2719],['t5_8',2767],['t6_8',2443],['t7_8',2787],['t8_8',2821],['t9_8',2669],['ta_8',2723],['tb_8',2841],['tc_8',1573],['td_8',1221],['te_8',2702],['tf_8',2806],['tg_8',2560],['th_8',2786],['ti_8',2633],['tj_8',2817],['tk_8',2708],['tl_8',1707],['tm_8',828]];
+function load8(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f8);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 24;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_8");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>chapter2 Page6</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(7,6,935,1210,0,heights,'.jpg');
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">Actual Size</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+		<option value="5">Automatic</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load6();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+        if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+        isDone[i] = false;
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_6{left:110px;top:169px;}
+#t2_6{left:110px;top:217px;}
+#t3_6{left:110px;top:258px;}
+#t4_6{left:110px;top:299px;}
+#t5_6{left:110px;top:416px;}
+#t6_6{left:110px;top:457px;}
+#t7_6{left:110px;top:513px;}
+#t8_6{left:110px;top:554px;}
+#t9_6{left:110px;top:596px;}
+#ta_6{left:110px;top:637px;}
+#tb_6{left:110px;top:678px;}
+#tc_6{left:110px;top:719px;}
+#td_6{left:110px;top:760px;}
+#te_6{left:110px;top:802px;}
+#tf_6{left:110px;top:843px;}
+#tg_6{left:110px;top:884px;}
+#th_6{left:110px;top:1134px;}
+#ti_6{left:807px;top:1126px;}
+
+.s1_6{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: NUGPVM-ArialMT6;
+	color: rgb(183,183,183);
+}
+
+.s3_6{
+	FONT-SIZE: 55px;
+	FONT-FAMILY: NUGPVM-ArialMT6;
+	color: rgb(153,153,153);
+}
+
+.s4_6{
+	FONT-SIZE: 85px;
+	FONT-FAMILY: NUGPVM-ArialMT6;
+	color: rgb(153,153,153);
+}
+
+.s2_6{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: RSPHKP-Cambria6;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: RSPHKP-Cambria6;
+	src :url("6/fonts/RSPHKP-Cambria.woff") format("woff");
+}
+
+@font-face {
+	font-family: NUGPVM-ArialMT6;
+	src :url("6/fonts/NUGPVM-ArialMT.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_6" class="t s1_6">Cash</div>
+<div id="t2_6" class="t s2_6">Two cash numbers are published daily, the total cash</div>
+<div id="t3_6" class="t s2_6">and the estimated cash per creation unit. The cash in</div>
+<div id="t4_6" class="t s2_6">the fund is calculated as follows :</div>
+<div id="t5_6" class="t s2_6">The NAV is calculated as a price per share, so we use</div>
+<div id="t6_6" class="t s2_6">the total cash number given per-share as well.</div>
+<div id="t7_6" class="t s2_6">The total cash number is obtained at the end of the</div>
+<div id="t8_6" class="t s2_6">day. To get an intraday approximation we can use</div>
+<div id="t9_6" class="t s2_6">the estimated cash amount which determines how</div>
+<div id="ta_6" class="t s2_6">much cash the fund will require for the creation or</div>
+<div id="tb_6" class="t s2_6">redemptions. When calculating the Intraday Portfolio</div>
+<div id="tc_6" class="t s2_6">Value, the estimated cash number should be used. This</div>
+<div id="td_6" class="t s2_6">number incorporates management fees, dividends,</div>
+<div id="te_6" class="t s2_6">and other cash sources related to the fund. Once the</div>
+<div id="tf_6" class="t s2_6">exact characteristics of the cash are obtained the</div>
+<div id="tg_6" class="t s2_6">following day, the total cash number is then used.</div>
+<div id="th_6" class="t s3_6">Copyright © MatchToQuality 2013</div>
+<div id="ti_6" class="t s4_6">6</div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg6Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg6"><object width="935" height="1210" data="6/6.svg" type="image/svg+xml" id="pdf6" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f6 = [['t2_6',2755],['t3_6',2735],['t4_6',1709],['t5_6',2723],['t6_6',2392],['t7_6',2638],['t8_6',2585],['t9_6',2620],['ta_6',2623],['tb_6',2774],['tc_6',2843],['td_6',2639],['te_6',2695],['tf_6',2527],['tg_6',2569],['th_6',828]];
+function load6(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f6);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 19;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_6");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

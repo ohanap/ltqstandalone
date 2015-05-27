@@ -1,0 +1,338 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>chapter0 Page3</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(8,3,935,1210,0,heights,'.jpg');
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">Actual Size</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+		<option value="5">Automatic</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load3();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+        if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+        isDone[i] = false;
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_3{left:110px;top:143px;}
+#t2_3{left:110px;top:184px;}
+#t3_3{left:110px;top:226px;}
+#t4_3{left:110px;top:267px;}
+#t5_3{left:110px;top:308px;}
+#t6_3{left:110px;top:349px;}
+#t7_3{left:110px;top:429px;}
+#t8_3{left:119px;top:507px;}
+#t9_3{left:147px;top:505px;}
+#ta_3{left:513px;top:505px;}
+#tb_3{left:147px;top:546px;}
+#tc_3{left:147px;top:587px;}
+#td_3{left:119px;top:630px;}
+#te_3{left:147px;top:629px;}
+#tf_3{left:305px;top:629px;}
+#tg_3{left:147px;top:670px;}
+#th_3{left:147px;top:711px;}
+#ti_3{left:119px;top:754px;}
+#tj_3{left:147px;top:752px;}
+#tk_3{left:338px;top:752px;}
+#tl_3{left:147px;top:793px;}
+#tm_3{left:119px;top:836px;}
+#tn_3{left:147px;top:835px;}
+#to_3{left:311px;top:835px;}
+#tp_3{left:147px;top:876px;}
+#tq_3{left:147px;top:917px;}
+#tr_3{left:147px;top:958px;}
+#ts_3{left:119px;top:1001px;}
+#tt_3{left:147px;top:999px;}
+#tu_3{left:399px;top:999px;}
+#tv_3{left:147px;top:1041px;}
+#tw_3{left:110px;top:1134px;}
+#tx_3{left:807px;top:1126px;}
+
+.s1_3{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: RMAHTJ-Cambria3;
+	color: rgb(51,51,51);
+}
+
+.s7_3{
+	FONT-SIZE: 85px;
+	FONT-FAMILY: YJCIFL-ArialMT3;
+	color: rgb(153,153,153);
+}
+
+.s2_3{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: YJCIFL-ArialMT3;
+	color: rgb(183,183,183);
+}
+
+.s5_3{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: RMAHTJ-Cambria3;
+	color: rgb(67,67,67);
+}
+
+.s4_3{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: FBUMDC-Cambria-Bold3;
+	color: rgb(67,67,67);
+}
+
+.s3_3{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: YJCIFL-ArialMT3;
+	color: rgb(67,67,67);
+}
+
+.s6_3{
+	FONT-SIZE: 55px;
+	FONT-FAMILY: YJCIFL-ArialMT3;
+	color: rgb(153,153,153);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: FBUMDC-Cambria-Bold3;
+	src :url("3/fonts/FBUMDC-Cambria-Bold.woff") format("woff");
+}
+
+@font-face {
+	font-family: BPHPYA-Arial-BoldMT3;
+	src :url("3/fonts/BPHPYA-Arial-BoldMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: YJCIFL-ArialMT3;
+	src :url("3/fonts/YJCIFL-ArialMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: RMAHTJ-Cambria3;
+	src :url("3/fonts/RMAHTJ-Cambria.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_3" class="t s1_3">from an ETF which consists of securities or derivative</div>
+<div id="t2_3" class="t s1_3">contracts. When you buy an ETN, you receive a debt</div>
+<div id="t3_3" class="t s1_3">investment similar to a bond. Even though they</div>
+<div id="t4_3" class="t s1_3">carry credit risk, ETNs are backed by high credit</div>
+<div id="t5_3" class="t s1_3">rating banks so they are considered relatively safe</div>
+<div id="t6_3" class="t s1_3">investment products.</div>
+<div id="t7_3" class="t s2_3">The different flavors of ETFs</div>
+<div id="t8_3" class="t s3_3">●</div>
+<div id="t9_3" class="t s4_3">Sector and Industry ETFs:</div>
+<div id="ta_3" class="t s5_3">Provide exposure to</div>
+<div id="tb_3" class="t s5_3">an industry, such as pharmaceuticals, high-tech, or</div>
+<div id="tc_3" class="t s5_3">commodities.</div>
+<div id="td_3" class="t s3_3">●</div>
+<div id="te_3" class="t s4_3">Style ETFs:</div>
+<div id="tf_3" class="t s5_3">Track an investment style or market</div>
+<div id="tg_3" class="t s5_3">capitalization focus, such as large-cap value or small</div>
+<div id="th_3" class="t s5_3">–cap growth.</div>
+<div id="ti_3" class="t s3_3">●</div>
+<div id="tj_3" class="t s4_3">Market ETFs:</div>
+<div id="tk_3" class="t s5_3">Designed to track a particular index</div>
+<div id="tl_3" class="t s5_3">like the S&amp;P 500 or NASDAQ.</div>
+<div id="tm_3" class="t s3_3">●</div>
+<div id="tn_3" class="t s4_3">Bond ETFs:</div>
+<div id="to_3" class="t s5_3">Provide exposure to nearly every</div>
+<div id="tp_3" class="t s5_3">type of bond available including U.S. Treasury,</div>
+<div id="tq_3" class="t s5_3">Corporate, Municipal, International, High Yield and</div>
+<div id="tr_3" class="t s5_3">more.</div>
+<div id="ts_3" class="t s3_3">●</div>
+<div id="tt_3" class="t s4_3">Commodity ETFs:</div>
+<div id="tu_3" class="t s5_3">Track the price of a commodity,</div>
+<div id="tv_3" class="t s5_3">such as oil, gold or corn.</div>
+<div id="tw_3" class="t s6_3">Copyright © MatchToQuality 2013</div>
+<div id="tx_3" class="t s7_3">3</div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg3Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg3"><object width="935" height="1210" data="3/3.svg" type="image/svg+xml" id="pdf3" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f3 = [['t1_3',2791],['t2_3',2695],['t3_3',2456],['t4_3',2506],['t5_3',2609],['t6_3',1105],['t7_3',1540],['t9_3',1437],['ta_3',1048],['tb_3',2628],['te_3',607],['tf_3',1889],['tg_3',2709],['th_3',673],['tj_3',739],['tk_3',1857],['tl_3',1506],['tn_3',628],['to_3',1726],['tp_3',2403],['tq_3',2647],['tt_3',980],['tu_3',1645],['tv_3',1247],['tw_3',828]];
+function load3(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f3);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 34;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_3");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

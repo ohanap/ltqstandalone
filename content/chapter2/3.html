@@ -1,0 +1,275 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>chapter2 Page3</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(7,3,935,1210,0,heights,'.jpg');
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">Actual Size</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+		<option value="5">Automatic</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load3();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+        if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+        isDone[i] = false;
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_3{left:110px;top:148px;}
+#t2_3{left:110px;top:188px;}
+#t3_3{left:110px;top:229px;}
+#t4_3{left:110px;top:269px;}
+#t5_3{left:110px;top:325px;}
+#t6_3{left:110px;top:365px;}
+#t7_3{left:110px;top:461px;}
+#t8_3{left:110px;top:501px;}
+#t9_3{left:110px;top:542px;}
+#ta_3{left:110px;top:582px;}
+#tb_3{left:110px;top:623px;}
+#tc_3{left:110px;top:663px;}
+#td_3{left:110px;top:704px;}
+#te_3{left:110px;top:744px;}
+#tf_3{left:110px;top:784px;}
+#tg_3{left:110px;top:825px;}
+#th_3{left:110px;top:865px;}
+#ti_3{left:110px;top:906px;}
+#tj_3{left:110px;top:946px;}
+#tk_3{left:110px;top:1134px;}
+#tl_3{left:807px;top:1126px;}
+
+.s1_3{
+	FONT-SIZE: 122px;
+	FONT-FAMILY: NUGPVM-ArialMT3;
+	color: rgb(0,0,0);
+}
+
+.s3_3{
+	FONT-SIZE: 85px;
+	FONT-FAMILY: NUGPVM-ArialMT3;
+	color: rgb(153,153,153);
+}
+
+.s2_3{
+	FONT-SIZE: 55px;
+	FONT-FAMILY: NUGPVM-ArialMT3;
+	color: rgb(153,153,153);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: NUGPVM-ArialMT3;
+	src :url("3/fonts/NUGPVM-ArialMT.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_3" class="t s1_3">This value is calculated daily on the basis of the</div>
+<div id="t2_3" class="t s1_3">value of the underlying index securities, the cash</div>
+<div id="t3_3" class="t s1_3">component and any other investments (e.g. bonds,</div>
+<div id="t4_3" class="t s1_3">derivatives) that the fund may have.</div>
+<div id="t5_3" class="t s1_3">The Net Asset Value forms the basis for the creation</div>
+<div id="t6_3" class="t s1_3">and redemption process.</div>
+<div id="t7_3" class="t s1_3">The NAV represents the intrinsic value of the</div>
+<div id="t8_3" class="t s1_3">ETF shares, but the prices of the ETF shares</div>
+<div id="t9_3" class="t s1_3">on the market may fluctuate during the trading</div>
+<div id="ta_3" class="t s1_3">day (e.g. because of normal forces of supply and</div>
+<div id="tb_3" class="t s1_3">demand). However, spreads between the NAV</div>
+<div id="tc_3" class="t s1_3">and the price on the market are usually close</div>
+<div id="td_3" class="t s1_3">because of the intervention of professional investors</div>
+<div id="te_3" class="t s1_3">or "arbitrageurs" that will step in to take advantage</div>
+<div id="tf_3" class="t s1_3">of any premiums or discounts to the underlying</div>
+<div id="tg_3" class="t s1_3">value by either creating ETF shares and selling them</div>
+<div id="th_3" class="t s1_3">on the market when they trade at a premium or by</div>
+<div id="ti_3" class="t s1_3">redeeming ETF shares and selling the underlying</div>
+<div id="tj_3" class="t s1_3">stocks when the ETF shares trade at a discount.</div>
+<div id="tk_3" class="t s2_3">Copyright © MatchToQuality 2013</div>
+<div id="tl_3" class="t s3_3">3</div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg3Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg3"><object width="935" height="1210" data="3/3.svg" type="image/svg+xml" id="pdf3" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f3 = [['t1_3',2579],['t2_3',2634],['t3_3',2749],['t4_3',1934],['t5_3',2830],['t6_3',1344],['t7_3',2423],['t8_3',2436],['t9_3',2491],['ta_3',2641],['tb_3',2518],['tc_3',2430],['td_3',2817],['te_3',2720],['tf_3',2532],['tg_3',2851],['th_3',2701],['ti_3',2661],['tj_3',2613],['tk_3',828]];
+function load3(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f3);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 22;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_3");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>
